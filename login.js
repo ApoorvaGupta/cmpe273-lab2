@@ -42,6 +42,15 @@ Login.prototype.login = function(_name, _email) {
  */ 
 Login.prototype.logout = function(sessionId) {
 	console.log('logout::' + sessionId);
+	if(sessionId in this.sessionMap)
+	{
+		delete this.sessionMap[sessionId];
+		console.log("Logout")
+	}
+	else
+	{
+		console.log("Not Found");
+	}
    /*
 	* TODO: Remove the given sessionId from the sessionMap
 	*/
