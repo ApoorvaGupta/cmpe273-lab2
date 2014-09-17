@@ -53,11 +53,11 @@ response.end(login.hello(newSessionId));
 function del(request, response) {
 	console.log("DELETE:: Logout from the server");
 	var cookies = request.cookies;
-	var delete = cookies['sessionid'];
-	console.log(delete);
-	if(login.isLoggedIn(delete))
+	var delt = cookies['session_id'];
+	console.log(delt);
+	if(login.isLoggedIn(delt))
 	{
-		login.logout(delete);
+		login.logout(delt);
 		console.log("return");
 		response.end("Logged Out\n");
 		
@@ -75,11 +75,11 @@ function del(request, response) {
 function put(request, response) {
 	console.log("PUT:: Re-generate new seesion_id for the same user");
 	var cookies = request.cookies;
-	var sid = cookies ['sessionid'];
+	var sid = cookies ['session_id'];
 	var name = login.sessionMap[sid].name;
 	var email = login.sessionMap[sid].email;
 	var newSessionId= login.login(name,email);
-	response.setHeader('Set-Cookie','sessionid=' +newSessionId);
+	response.setHeader('Set-Cookie','session_id=' +newSessionId);
 		// TODO: refresh session id; similar to the post() function
 
 	response.end("Re-freshed session id\n");
