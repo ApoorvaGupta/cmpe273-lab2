@@ -75,7 +75,7 @@ function del(request, response) {
 function put(request, response) {
 	console.log("PUT:: Re-generate new seesion_id for the same user");
 	var cookies = request.cookies;
-	var sid = cookies ("sessionid");
+	var sid = cookies ['sessionid'];
 	var name = login.sessionMap[sid].name;
 	var email = login.sessionMap[sid].email;
 	var newSessionId= login.login(name,email);
